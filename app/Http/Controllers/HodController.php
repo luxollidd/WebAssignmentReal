@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Hod;
 use App\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class HodController extends Controller
 {
@@ -86,4 +87,26 @@ class HodController extends Controller
     {
         //
     }
+
+    public function approve(Request $request, Hod $hod){
+
+        if ($request->input('action') == 'Approve'){
+
+            $ab = Application::find($request->get('appval'));
+            $ab->status = "1";
+            $ab->save();
+    
+        }
+
+        else if($request->input('action') == 'Deny'){
+        
+            $ab = Application::find($request->get('appval'));
+            $ab->status = "2";
+            $ab->save();
+        }
+        
+        return Redirect::back()->with('message','Operation Successful !');
+
+    }
+
 }

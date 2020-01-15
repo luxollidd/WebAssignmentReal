@@ -49,10 +49,10 @@ class ApplicationController extends Controller
     {
         $app = new \App\Application;
 
-        $app->student_id=$request->get('std_id');
+        $app->student_id=$request->get('studentid');
         $app->choice= $request->get('choice');
-        $app->subject_id=$request->get('subj_id');
-        $app->reason= $request->get('reasons');
+        $app->subject_id=$request->get('subjectid');
+        $app->reason= $request->get('reason');
         $app->solution= $request->get('solution');
         $app->save();
 

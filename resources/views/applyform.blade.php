@@ -4,15 +4,19 @@
 
 <form method="post" action="{{route('apply.store')}}" id="create">
 @csrf
+<div class="container">
+<div class="row">
+<div class="col-4">
+</div>
+<div class="col-4">
 <h1>Add Drop</h1>
     
     <div class="form-group">
-        <label for="std_id">Student Name</label>
-        <input type="text" class="form-control" name="std_id" value="{{$std->id}}">
+        <label for="std_id">Student Name: {{$std->name}} {{$std->id}}</label>
     </div>
 
     <div class="form-group">
-        <label for="std_id">Student ID</label>
+        <label for="std_id">Student Email</label>
         <input type="text" class="form-control" name="email" value="{{$std->email}}">
     </div>
 
@@ -25,29 +29,29 @@
  
     <div class="form-group">
         <label for="subj_name">Subject Name</label>
-        <select class="form-control" id="subject">
+        <select class="form-control" id="subject" name="subjectid">
         @foreach ($subj as $sb)
-            <option value="{{$sb->subject_id}}">{{$sb->name}}</option>
+            <option value="{{$sb->id}}">{{$sb->name}} - {{$sb->subject_code}}</option>
         @endforeach
     </select>
-    </div>
-
-    <div class="form-group">
-        <label for="subj_code">Subject Code</label>
-        <input type="text" class="form-control" name="subj_code" >
     </div>
   
     <div class="form-group">
         <label for="reasons">Reasons</label>
-        <textarea class="form-control" id="reasons" rows="3"></textarea>
+        <textarea class="form-control" id="reason" rows="3" name="reason"></textarea>
     </div>
 
     <div class="form-group">
         <label for="solution">Proposed Solution</label>
-        <textarea class="form-control" id="solution" rows="3"></textarea>
+        <textarea class="form-control" id="solution" rows="3" name="solution"></textarea>
     </div>
 
-    <input type="hidden" class="form-control" name="std_id" value="{{$std->student_id}}" >
+    <input type="hidden" class="form-control" name="studentid" value="{{$std->id}}" >
   <input type="submit" value="Submit">
 </form>
+</div>
+<div class="col-4">
+</div>
+</div>
+</div>
 @endsection

@@ -26,3 +26,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource ('/HOD', 'HodController');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout2');
+
+Route::post('/HOD','HodController@approve');
+
