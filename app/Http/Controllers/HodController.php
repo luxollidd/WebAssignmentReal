@@ -20,7 +20,7 @@ class HodController extends Controller
         $app= Application::all();
         $i=0;
         
-        if (Auth::check()){
+        if (Auth::guard('hod')->check()){
         return view('HOD', ['app' => Application::with('student')->get(),'app' => Application::with('subject')->get()], compact ('app','i'));
         }
 
@@ -115,6 +115,20 @@ class HodController extends Controller
         
         return Redirect::back()->with('message','Operation Successful!');
 
+    }
+
+    public function showPast()
+    {
+        $app= Application::all();
+        $i=0;
+        
+        if (Auth::guard('hod')->check()){
+        return view('HODpast', ['app' => Application::with('student')->get(),'app' => Application::with('subject')->get()], compact ('app','i'));
+
+        }
+        else{
+            return view('failuser');
+        }
     }
 
 }

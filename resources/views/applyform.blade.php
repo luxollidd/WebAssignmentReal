@@ -12,7 +12,7 @@
 <h1>Add Drop</h1>
     
     <div class="form-group">
-        <label for="std_id">Student Name: {{$std->name}} {{$std->id}}</label>
+        <label for="std_id">Student Name: {{$std->name}}</label>
     </div>
 
     <div class="form-group">
@@ -31,7 +31,7 @@
         <label for="subj_name">Subject Name</label>
         <select class="form-control" id="subject" name="subjectid">
         @foreach ($subj as $sb)
-            <option value="{{$sb->id}}">{{$sb->name}} - {{$sb->subject_code}}</option>
+            <option value="{{$sb->id}}">{{$sb->name}} - {{$sb->subj_code}}</option>
         @endforeach
     </select>
     </div>

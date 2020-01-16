@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterTableHodAddAuth2 extends Migration
+class AlterTableSubjectsAddId extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AlterTableHodAddAuth2 extends Migration
      */
     public function up()
     {
-        Schema::table('hods',function (Blueprint $table){
-
-            $table->string('email');
+        Schema::table('subjects',function (Blueprint $table){
+            
+            $table->string('subj_code');
         });
     }
 

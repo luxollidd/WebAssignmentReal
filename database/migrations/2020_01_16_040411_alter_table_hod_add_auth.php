@@ -20,7 +20,7 @@ class AlterTableHodAddAuth extends Migration
         });
         
         Schema::table('students',function (Blueprint $table){
-            $table->boolean('is_super')->default(false);
+            $table->boolean('is_student')->default(false);
             $table->rememberToken();
         });
     }

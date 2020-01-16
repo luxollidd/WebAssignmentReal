@@ -46,6 +46,15 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'hod' => [
+            'driver' => 'session',
+            'provider' => 'hods',
+        ],
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
     ],
 
     /*
@@ -71,10 +80,20 @@ return [
             'model' => App\User::class,
         ],
 
+        'hods' => [
+            'driver' => 'eloquent',
+            'model' => App\Hod::class,
+        ],
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => App\Student::class,
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
     ],
 
     /*

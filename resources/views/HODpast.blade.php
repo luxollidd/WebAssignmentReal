@@ -2,7 +2,6 @@
 
 @section('content')
 
-    <div class="row justify-content-right"><a href="{{url('/hod/past')}}"><button class="btn btn-primary">History</button></a></div>
     <h1>Application List</h1>
     <table class="table table-hover">
         <thead>
@@ -21,7 +20,7 @@
 
         <tbody>
             @foreach($app as $app)
-            @if($app->status == 0)
+            @if($app->status != 0)
             <tr>
                 <th scope="row">{{ $i++}}</th>  
                 <td>{{$app->id}}</td>
@@ -30,14 +29,12 @@
                 <td>{{$app->subject->name}}</td>
                 <td>{{$app->reason}}</td>
                 <td>{{$app->solution}}</td>
-                <td>Pending</td>
                 <td>
-                    <form action="{{ action('HodController@approve') }}" method="post">
-                        @csrf
-                        <input type="hidden" value="{{$app->id}}" name="appval">
-                        <input type="submit" class="btn btn-primary btn-lg" value="Approve" name="action">
-                        <input type="submit" class="btn btn-danger btn-lg" value="Deny" name="action">
-                    </form>
+                @if ($app->status == 1)
+                Approved
+                @else
+                Denied
+                @endif
                 </td>
             </tr>
             

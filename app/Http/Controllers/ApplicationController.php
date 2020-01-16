@@ -7,6 +7,7 @@ use App\Student;
 use App\Subject;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Session;
 
 class ApplicationController extends Controller
 {
@@ -17,10 +18,10 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        $std=Student::find('1');
+        $std=Student::find(Auth::guard('student')->id());
         $subj=Subject::all();
 
-        if (Auth::check()){//must be logged in user
+        if (Auth::guard('student')->check()){//must be logged in user
         return view('applyform',compact ('std','subj'));
         }
 
@@ -56,7 +57,7 @@ class ApplicationController extends Controller
         $app->solution= $request->get('solution');
         $app->save();
 
-        return redirect('/home');
+        return view('/confirm');
     }
 
     /**
