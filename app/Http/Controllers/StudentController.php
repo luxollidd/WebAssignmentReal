@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+use App\Subject;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -14,7 +15,23 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+       // $student= Student::all();
+        //$i=0;
+
+        //return $student;
+        //return view('stdhomepage', ['student' => Student::with('subject')->get()], compact ('student','i'));
+
+        $std=Student::find('1');
+        $subj=Subject::with('std')->get();
+        $i=0;
+
+        if (Auth::check()){
+        return view('stdhomepage',compact ('std','subj','i'));
+        }
+
+        else{
+            return view('home');
+        }
     }
 
     /**

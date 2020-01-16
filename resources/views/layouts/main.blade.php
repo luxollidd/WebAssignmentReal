@@ -18,6 +18,11 @@
             <div class=" alert alert-danger">
                 <p>{{ \Session::get('danger') }}</p>
             </div>
+
+        @elseif(\Session::has('message'))
+            <div class=" alert alert-warning">
+                <p>{{ \Session::get('message') }}</p>
+            </div>
         
         @if ($errors->any())
             <div class="alert alert-danger">

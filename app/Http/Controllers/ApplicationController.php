@@ -20,12 +20,12 @@ class ApplicationController extends Controller
         $std=Student::find('1');
         $subj=Subject::all();
 
-        if (Auth::check()){
+        if (Auth::check()){//must be logged in user
         return view('applyform',compact ('std','subj'));
         }
 
         else{
-            return view('home');
+            return view('failuser');
         }
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Hod;
 use App\Application;
 use Illuminate\Http\Request;
@@ -18,9 +19,16 @@ class HodController extends Controller
     {
         $app= Application::all();
         $i=0;
-
+        
+        if (Auth::check()){
         return view('HOD', ['app' => Application::with('student')->get(),'app' => Application::with('subject')->get()], compact ('app','i'));
+        }
+
+        else{
+            return view('failuser');
+        }
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -105,7 +113,7 @@ class HodController extends Controller
             $ab->save();
         }
         
-        return Redirect::back()->with('message','Operation Successful !');
+        return Redirect::back()->with('message','Operation Successful!');
 
     }
 

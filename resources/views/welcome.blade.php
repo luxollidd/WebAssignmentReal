@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Home Page
+                    Add and Drop System
                 </div>
 
                 <div class="links">
