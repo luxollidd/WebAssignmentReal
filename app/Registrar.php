@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Registrar extends Model
 {
-    public function applications(){
-        return $this->hasMany(Application::class);
+    public function department(){
+        return $this->hasOne(Department::class);
     }
 }

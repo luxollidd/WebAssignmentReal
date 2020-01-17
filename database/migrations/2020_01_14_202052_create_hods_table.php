@@ -15,10 +15,10 @@ class CreateHodsTable extends Migration
     {
         Schema::create('hods', function (Blueprint $table) {
             $table->bigIncrements('id');
-
-
             $table->string('name');
             $table->string('password');
+            $table->string('email');
+            $table->rememberToken();
 
             $table->timestamps();
         });

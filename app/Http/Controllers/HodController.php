@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\DenyMail;
 use Auth;
 use App\Hod;
 use App\Application;
+use App\Mail\ApprovedMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-
+use Illuminate\Support\Facades\Mail;
 class HodController extends Controller
 {
     /**
@@ -19,9 +21,10 @@ class HodController extends Controller
     {
         $app= Application::all();
         $i=0;
-        
+        $current = Auth::guard('hod')->user();
+
         if (Auth::guard('hod')->check()){
-        return view('HOD', ['app' => Application::with('student')->get(),'app' => Application::with('subject')->get()], compact ('app','i'));
+        return view('HOD', ['app' => Application::with('student')->get(),'app' => Application::with('subject')->get()], compact ('app','i','current'));
         }
 
         else{
@@ -103,16 +106,22 @@ class HodController extends Controller
             $ab = Application::find($request->get('appval'));
             $ab->status = "1";
             $ab->save();
-    
+
+            Mail::to('alie7@gmail.com')->send(new ApprovedMail());
+
         }
 
         else if($request->input('action') == 'Deny'){
-        
+
             $ab = Application::find($request->get('appval'));
             $ab->status = "2";
             $ab->save();
+
+            Mail::to('alieDeny@gmail.com')->send(new DenyMail());
+
+
         }
-        
+
         return Redirect::back()->with('message','Operation Successful!');
 
     }
@@ -121,9 +130,11 @@ class HodController extends Controller
     {
         $app= Application::all();
         $i=0;
-        
+
+        $current = Auth::guard('hod')->user();
+
         if (Auth::guard('hod')->check()){
-        return view('HODpast', ['app' => Application::with('student')->get(),'app' => Application::with('subject')->get()], compact ('app','i'));
+        return view('HODpast', ['app' => Application::with('student')->get(),'app' => Application::with('subject')->get()], compact ('app','i', 'current'));
 
         }
         else{

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Student;
 use App\Subject;
+use App\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Session;
 
 class StudentController extends Controller
 {
@@ -98,5 +101,12 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         //
+    }
+
+    public function showHome(){
+        $id = Auth::guard('student')->id();
+        $app = Application::all();
+        $i = 0;
+        return view('student', compact('app','i', 'id'));
     }
 }

@@ -39,9 +39,10 @@ Route::get('/login/hod', 'Auth\LoginController@showHodLoginForm');
     Route::post('/register/student', 'Auth\RegisterController@createStudent');
 
     Route::view('/home', 'home')->middleware('auth');
-    Route::view('/hod', 'hod');
+    Route::get('/hod', 'HodController@index');
     Route::view('/student', 'student');
 
     Route::view('/confirm','confirm');
 
     Route::get('/hod/past','HodController@showPast');
+    Route::get('/student', 'StudentController@showHome');

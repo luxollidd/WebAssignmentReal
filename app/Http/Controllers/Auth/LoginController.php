@@ -46,21 +46,21 @@ class LoginController extends Controller
         {
             return view('auth.login', ['url' => 'hod']);
         }
-    
+
     public function hodLogin(Request $request)
         {
             $this->validate($request, [
                 'email'   => 'required|email',
                 'password' => 'required|min:6'
             ]);
-    
+
             if (Auth::guard('hod')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-    
+
                 return redirect()->intended('/HOD');
             }
             return back()->withInput($request->only('email', 'remember'));
         }
-    
+
     public function showStudentLoginForm()
         {
             return view('auth.login', ['url' => 'student']);
@@ -72,11 +72,11 @@ class LoginController extends Controller
                 'email'   => 'required|email',
                 'password' => 'required|min:6'
             ]);
-    
-            if (Auth::guard('student')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-                
 
-                return redirect()->intended('/apply');
+            if (Auth::guard('student')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+
+
+                return redirect()->intended('/student');
             }
             return back()->withInput($request->only('email', 'remember'));
         }

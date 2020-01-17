@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
-
+<br>
     <div class="row justify-content-right"><a href="{{url('/hod/past')}}"><button class="btn btn-primary">History</button></a></div>
-    <h1>Application List</h1>
+<br><h1>Application List</h1>
     <table class="table table-hover">
         <thead>
           <tr>
@@ -22,8 +22,9 @@
         <tbody>
             @foreach($app as $app)
             @if($app->status == 0)
+                @if($current->department_id == $app->subject->department_id)
             <tr>
-                <th scope="row">{{ $i++}}</th>  
+                <th scope="row">{{ $i++}}</th>
                 <td>{{$app->id}}</td>
                 <td>{{$app->student->name}}</td>
                 <td>{{$app->choice}}</td>
@@ -40,11 +41,11 @@
                     </form>
                 </td>
             </tr>
-            
+            @endif
             @endif
             @endforeach
 
-            
+
         </tbody>
       </table>
 

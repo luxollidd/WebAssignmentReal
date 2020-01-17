@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Hod extends Authenticatable
 {
     public function department(){
-        return $this->belongsTo(Department::class);
+        return $this->hasOne(Department::class);
     }
 
     use Notifiable;
@@ -17,7 +17,7 @@ class Hod extends Authenticatable
         protected $guard = 'hod';
 
         protected $fillable = [
-            'name', 'email', 'password',
+            'name', 'email', 'password', 'department_id'
         ];
 
         protected $hidden = [

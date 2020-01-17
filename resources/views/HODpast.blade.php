@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-
+    <br><br>
     <h1>Application List</h1>
     <table class="table table-hover">
         <thead>
@@ -14,15 +14,15 @@
             <th scope="col">REASONS</th>
             <th scope="col">SOLUTION</th>
             <th scope="col">STATUS</th>
-            <th scope="col">ACTION</th>
           </tr>
         </thead>
 
         <tbody>
             @foreach($app as $app)
             @if($app->status != 0)
+                @if($current->department_id == $app->subject->department_id)
             <tr>
-                <th scope="row">{{ $i++}}</th>  
+                <th scope="row">{{ $i++}}</th>
                 <td>{{$app->id}}</td>
                 <td>{{$app->student->name}}</td>
                 <td>{{$app->choice}}</td>
@@ -37,11 +37,11 @@
                 @endif
                 </td>
             </tr>
-            
+            @endif
             @endif
             @endforeach
 
-            
+
         </tbody>
       </table>
 

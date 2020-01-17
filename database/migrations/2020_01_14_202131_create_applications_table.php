@@ -15,16 +15,10 @@ class CreateApplicationsTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->bigIncrements('id');
-
-
-
-            $table->dateTime('date');
+            $table->string('choice');
             $table->string('reason');
             $table->string('solution');
-            $table->string('status');
-
-
-
+            $table->string('status')->default('0');
             $table->timestamps();
         });
     }

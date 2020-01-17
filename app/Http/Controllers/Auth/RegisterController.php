@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Hod;
 use App\Student;
+use App\Department;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -78,7 +79,9 @@ class RegisterController extends Controller
 
     public function showHodRegisterForm()
     {
-        return view('auth.register', ['url' => 'hod']);
+        $dept = Department::all();
+        $url = 'hod';
+        return view('auth.register', compact('url','dept'));
     }
 
     public function showStudentRegisterForm()
@@ -93,6 +96,7 @@ class RegisterController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'department_id' => $request['dept'],
         ]);
         return redirect()->intended('login/hod');
     }

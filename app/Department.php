@@ -13,4 +13,8 @@ class Department extends Model
     public function hod(){
         return $this->belongsTo(Hod::class);
     }
+
+    public function registrar(){
+        return $this->belongsTo(Registrar::class);
+    }
 }

@@ -3,6 +3,7 @@
 
 <head>
     @include('includes.header')
+    <link href="{{asset('css/style.css')}}" rel="stylesheet"/>
 </head>
 
 <body>
@@ -12,7 +13,7 @@
         @if (\Session::has('success'))
             <div class= "alert alert-success">
                 <p>{{ \Session::get('success')}}</p>
-            </div> 
+            </div>
 
         @elseif(\Session::has('danger'))
             <div class=" alert alert-danger">
@@ -23,10 +24,10 @@
             <div class=" alert alert-warning">
                 <p>{{ \Session::get('message') }}</p>
             </div>
-        
+
         @if ($errors->any())
             <div class="alert alert-danger">
-                <ul> 
+                <ul>
                     @foreach ($error->all() as $error)
                         <li>{{$error}}</li>
                     @endforeach

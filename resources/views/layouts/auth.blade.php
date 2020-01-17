@@ -17,7 +17,7 @@
         <!-- Fonts -->
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
+        <link href="{{asset('css/style.css')}}" rel="stylesheet"/>
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         @include('includes.header')
@@ -43,7 +43,7 @@
                         <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
                            <li class="nav-item dropdown">
-                                
+
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"

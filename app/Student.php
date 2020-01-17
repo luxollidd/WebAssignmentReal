@@ -19,12 +19,9 @@ class Student extends Authenticatable
         protected $hidden = [
             'password', 'remember_token',
         ];
-        
+
         public function applications(){
         return $this->hasMany(Application::class);
     }
 
-    public function subjects(){
-        return $this->belongsToMany(Subject::class,'student_subject');
-    }
 }

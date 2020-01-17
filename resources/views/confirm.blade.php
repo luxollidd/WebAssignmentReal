@@ -10,6 +10,7 @@
 
                 <div class="card-body">
                     You have successfuly perform Add/Drop
+                    <a href="{{url('/apply')}}"><button class="btn btn-primary float-right">Return</button></a>
                 </div>
             </div>
         </div>
